@@ -22,9 +22,7 @@ namespace WindowsFormsApp8
         }
         private void Form1_MouseClick(object sender, MouseEventArgs e)
         {
-
         }
-
         private void Form1_MouseUp(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -51,16 +49,20 @@ namespace WindowsFormsApp8
                 {
                     label.Location = location1;
                 }
+                label.DoubleClick += Label_DoubleClick;
                 this.Controls.Add(label);
             }
+        }
 
+        private void Label_DoubleClick(object sender, EventArgs e)
+        {
+            Label label = sender as Label;
+            label.Dispose();
         }
 
         private void Form1_MouseDown(object sender, MouseEventArgs e)
         {
             location1 = e.Location;
-
-
         }
     }
 }
