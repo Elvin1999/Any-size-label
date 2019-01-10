@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace WindowsFormsApp8
 {
     public partial class Form1 : Form
@@ -16,6 +15,7 @@ namespace WindowsFormsApp8
         public Point location2 { get; set; }
         public int _Width { get; set; }
         public int _Height { get; set; }
+        public Label _Label { get; set; }
         public Form1()
         {
             InitializeComponent();
@@ -44,6 +44,7 @@ namespace WindowsFormsApp8
                 if (location1.Y > location2.Y)
                 {
                     label.Location = location2;
+                    label.Size = new Size( _Width,_Height);
                 }
                 else
                 {
@@ -54,7 +55,6 @@ namespace WindowsFormsApp8
                 this.Controls.Add(label);
             }
         }
-
         private void Label_Click(object sender, EventArgs e)
         {
             Label label = new Label();
@@ -63,9 +63,7 @@ namespace WindowsFormsApp8
             label.Location = point;
             label.BackColor = Color.Blue;
             this.Controls.Add(label);
-
         }
-
         private void Label_DoubleClick(object sender, EventArgs e)
         {
             Label label = sender as Label;
