@@ -50,8 +50,20 @@ namespace WindowsFormsApp8
                     label.Location = location1;
                 }
                 label.DoubleClick += Label_DoubleClick;
+                label.Click += Label_Click;
                 this.Controls.Add(label);
             }
+        }
+
+        private void Label_Click(object sender, EventArgs e)
+        {
+            Label label = new Label();
+            label.Size = new Size(40, 40);
+            Point point = new Point(0, 0);
+            label.Location = point;
+            label.BackColor = Color.Blue;
+            this.Controls.Add(label);
+
         }
 
         private void Label_DoubleClick(object sender, EventArgs e)
