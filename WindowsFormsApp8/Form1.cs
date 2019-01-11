@@ -20,9 +20,7 @@ namespace WindowsFormsApp8
         {
             InitializeComponent();
         }
-        private void Form1_MouseClick(object sender, MouseEventArgs e)
-        {
-        }
+        public int Counter { get; set; }
         private void Form1_MouseUp(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -34,34 +32,40 @@ namespace WindowsFormsApp8
                 if (_Width < 10 && _Height < 10)
                 {
                     label.Size = new Size(10, 10);
-                }
-                else
-                {
-                    label.Size = new Size(_Height, _Width);
-                }
-                Random r = new Random();
-                label.BackColor = Color.FromArgb(r.Next(0, 256), r.Next(0, 256), 0);
-                if (location1.Y > location2.Y)
-                {
-                    label.Location = location2;
-                    label.Size = new Size( _Width,_Height);
-                }
-                else
-                {
                     label.Location = location1;
                 }
-                label.DoubleClick += Label_DoubleClick;
-                label.Click += Label_Click;
+                else
+                {
+                    if (location1.Y > location2.Y)
+                    {
+                        label.Location = location2;
+                        label.Size = new Size(_Width, _Height);
+                    }
+                    else
+                    {
+                        label.Location = location1;
+                        label.Size = new Size(_Width, _Height);
+                    }
+                    label.DoubleClick += Label_DoubleClick;
+                    label.Click += Label_Click;
+                }
+
+                label.Text = $"{++Counter}";
+                label.AutoSize = false;
+                label.Font = new Font("ITALIC", _Width / 2);
+                label.ForeColor = Color.White;
+                Random r = new Random();
+                label.BackColor = Color.FromArgb(r.Next(0, 256), r.Next(0, 256), r.Next(0, 150));
                 this.Controls.Add(label);
             }
         }
         private void Label_Click(object sender, EventArgs e)
         {
             Label label = new Label();
-            label.Size = new Size(40, 40);
+            label.Size = new Size(80, 40);
             Point point = new Point(0, 0);
             label.Location = point;
-            label.BackColor = Color.Blue;
+            label.BackColor = Color.LightGreen;
             this.Controls.Add(label);
         }
         private void Label_DoubleClick(object sender, EventArgs e)
@@ -74,5 +78,7 @@ namespace WindowsFormsApp8
         {
             location1 = e.Location;
         }
+
+
     }
 }
