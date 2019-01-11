@@ -15,7 +15,7 @@ namespace WindowsFormsApp8
         public Point location2 { get; set; }
         public int _Width { get; set; }
         public int _Height { get; set; }
-        public Label _Label { get; set; }
+        Label _Label = new Label();
         public Form1()
         {
             InitializeComponent();
@@ -61,18 +61,24 @@ namespace WindowsFormsApp8
             }
         }
         private void Label_Click(object sender, EventArgs e)
-        { 
-            Label label = new Label();
-            label.Size = new Size(80, 40);
-            Point point = new Point(0, 0);
-            label.Location = point;
-            label.BackColor = Color.LightGreen;
-            label.Text = $"X {_Label.Location.X} Y {_Label.Location.Y}";
-            this.Controls.Add(label);
+        {
+            if (sender is Label lb)
+            {
+                //_Label = new Label();
+                //_Label.Size = new Size(80, 40);
+                //Point point = new Point(0, 0);
+                //_Label.Location = point;
+                //_Label.Font = new Font("ITALIC", 9);
+                //_Label.BackColor = Color.LightGreen;
+                //_Label.Text = $"X {lb.Location.X} Y {lb.Location.Y}";
+                //this.Controls.Add(_Label);
+                mylabel.Text = $"X {lb.Location.X} Y {lb.Location.Y}";
+            }
         }
         private void Label_DoubleClick(object sender, EventArgs e)
         {
             Label label = sender as Label;
+            --Counter;
             label.Dispose();
         }
 
@@ -80,7 +86,5 @@ namespace WindowsFormsApp8
         {
             location1 = e.Location;
         }
-
-
     }
 }

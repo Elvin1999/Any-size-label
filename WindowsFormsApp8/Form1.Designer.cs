@@ -28,13 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.mylabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
+            // 
+            // mylabel
+            // 
+            this.mylabel.Location = new System.Drawing.Point(55, 22);
+            this.mylabel.Name = "mylabel";
+            this.mylabel.Size = new System.Drawing.Size(123, 36);
+            this.mylabel.TabIndex = 0;
+            this.mylabel.Text = "label1";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.mylabel);
             this.Name = "Form1";
             this.Text = "Form1";
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
@@ -44,6 +54,8 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.Label mylabel;
     }
 }
 
