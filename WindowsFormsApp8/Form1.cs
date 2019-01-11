@@ -28,11 +28,12 @@ namespace WindowsFormsApp8
                 location2 = e.Location;
                 _Width = Math.Abs(location1.X - location2.X);
                 _Height = Math.Abs(location1.Y - location2.Y);
-                Control label = new Label();
-                if (_Width < 10 && _Height < 10)
+                Label label = new Label();
+                if (_Width <= 10 && _Height <= 10)
                 {
                     label.Size = new Size(10, 10);
                     label.Location = location1;
+                    label.Font = new Font("ITALIC", 8);
                 }
                 else
                 {
@@ -48,24 +49,25 @@ namespace WindowsFormsApp8
                     }
                     label.DoubleClick += Label_DoubleClick;
                     label.Click += Label_Click;
+                    label.Font = new Font("Niagara Solid", _Width / 2);
                 }
-
                 label.Text = $"{++Counter}";
                 label.AutoSize = false;
-                label.Font = new Font("ITALIC", _Width / 2);
                 label.ForeColor = Color.White;
                 Random r = new Random();
                 label.BackColor = Color.FromArgb(r.Next(0, 256), r.Next(0, 256), r.Next(0, 150));
+                _Label = label;
                 this.Controls.Add(label);
             }
         }
         private void Label_Click(object sender, EventArgs e)
-        {
+        { 
             Label label = new Label();
             label.Size = new Size(80, 40);
             Point point = new Point(0, 0);
             label.Location = point;
             label.BackColor = Color.LightGreen;
+            label.Text = $"X {_Label.Location.X} Y {_Label.Location.Y}";
             this.Controls.Add(label);
         }
         private void Label_DoubleClick(object sender, EventArgs e)
